@@ -1,0 +1,20 @@
+.c-item{
+    height: 480px;
+}
+.c-img{
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6);
+}
+.card{
+    background-color: bisque;
+    padding: 5px 5px;
+}
+#cardtitlemain{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #f34a25;
+    text-align: center;
+}
+.cartitle{
+    font-size: 40px;
+}

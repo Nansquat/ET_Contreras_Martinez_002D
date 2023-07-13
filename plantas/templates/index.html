@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hespérides</title>
+    {% load static %}
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link href="{% static 'css/bootstrap.min.css' %}" type="text/css" rel="stylesheet">
+    <link rel="icon" href="{% static 'img/logo.jpg' %}" type="image">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/estiloscar.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" 
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<!--HEADER-->
+<body>
+  {% block content %}
+  <div class="container">
+    <header>
+      <div class="navbar">
+        {% if user.is_authenticated %}
+          <div class="logo">
+              <img src="{% static 'img/logo.jpg' %}" alt="hesper" width="30" height="30">
+              <a href="#">
+              </a>Hespérides</div>
+          <ul class="links">
+              <li><a href="{% url 'index' %}">Página principal</a></li>
+              <li><a href="{% url 'nosotros' %}">Quiénes somos</a></li>
+              <li><a href="{% url 'galeria' %}">Galería productos</a></li>
+              <li><a href="{% url 'plantas' %}">Plantas en stock</a></li>
+              <li><a href="{% url 'contacto' %}">Contáctanos</a></li>
+          </ul>
+          <a href="#" class="action-btn">Bienvenid@ {{user.username}}</a>
+          <div class="toggle-btn">
+              <i class="fa-solid fa-bars"></i>
+          </div>
+      </div>
+      {% endif %}
+      <div>
+        {% if user.is_authenticated %}
+          <a href="{% url 'logout' %}" id="userHesper">
+            <img src="{% static 'img/usericon.png' %}" alt="userHesper" width="21px">Cerrar sesión
+          </a>
+        {% else %}
+          <a href="{% url 'login' %}" id="userHesper">
+            <img src="{% static 'img/usericon.png' %}" alt="userHesper" width="21px">Iniciar sesión
+          </a>
+        {% endif %}
+      </div>
+      <div class="dropdown-menu">
+          <li><a href="{% url 'index' %}">Página principal</a></li>
+          <li><a href="{% url 'nosotros' %}">Quiénes somos</a></li>
+          <li><a href="{% url 'galeria' %}">Galería productos</a></li>
+          <li><a href="{% url 'plantas' %}">Plantas en stock</a></li>
+          <li><a href="{% url 'contacto' %}">Contáctanos</a></li>
+      </div>
+    </header>
+    <br>
+  </div>
+  <main role="main" class="container">
+    <div class="container">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" 
+      integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" 
+      crossorigin="anonymous"></script><!--SCRIPT CARRUSEL-->
+      <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>    
+        <div class="carousel-inner">
+          <div class="carousel-item active c-item">
+            <img src="{% static 'img/arbusto.jpg' %}" class="d-block w-100 c-img" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5 class="cartitle">Arbustos y plantas</h5>
+              <p>Contamos con muchos tipos de arbustos y plantas a la venta.</p>
+              <button type="button" class="btn btn-success">Más información</button>
+            </div>    
+          </div>
+          <div class="carousel-item c-item">
+            <img src="{% static 'img/maceteros.jpg' %}" class="d-block w-100 c-img" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5  class="cartitle">Maceteros</h5>
+              <p>Elige el macetero que más se ajuste a tu decoración de jardín o interiores.</p>
+              <button type="button" class="btn btn-success">Más información</button>
+            </div>    
+          </div>
+          <div class="carousel-item c-item">
+            <img src="{% static 'img/tierrahoja.jpg' %}" class="d-block w-100 c-img" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5  class="cartitle">Implementos de jardinería</h5>
+              <p>Tenemos todo lo que necesitas para tus tareas de jardinería tales como tierra de hoja, 
+                guantes de jardinería, ferilizantes, tijeras de podar entre otros.
+              </p>
+              <button type="button" class="btn btn-success">Más información</button>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    <br>
+    <div class="row jumbotron" id="descrp">
+      <div class="col-lg-6">
+        <div id="breve1">
+          <h1>HESPÉRIDES</h1>
+          <h2 class="lead"><strong>Breve descripción del proyecto</strong></h2> <br>
+          <p>
+            Somos un grupo de vecinos aficionados a la jardinería, nuestro fin es ayudar
+            a una fundación sin fines de lucro mediante la venta de implementos y materiales
+            para la jardinería. <br> <br>
+            Si estás interesado en esta noble labor te invitamos a revisar más a fondo nuestro sitio web.
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <img src="{% static 'img/somos1.webp' %}" alt="" class="img-fluid" id="somosimg1">
+      </div>
+    </div><br>
+    <div class="row jumbotron" id="descrp">
+      <div class="col-lg-6">
+        <div id="breve1">
+          <h1>HESPÉRIDES</h1>
+          <h2 class="lead"><strong>Nuestra visión</strong></h2> <br>
+          <p>
+            Tenemos la aspiración de proveer a nuestra comunidad con lo necesario para cuidar su jardín, además
+            buscamos ayudar a más fundaciones sin fines de lucro que gusten de este noble pasatiempo.
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <img src="{% static 'img/somos4.jpg' %}" alt="" class="img-fluid" id="somosimg2">
+      </div>
+    </div>
+  </main>
+  <br><br>
+    <!--FOOTER-->
+    <div class="container-fluid">
+      <footer class="pie-pagina">
+          <div class="grupo-1">
+            <div class="box">
+              <figure>
+                <a href="#">
+                  <img src="{% static 'img/logo.jpg' %}" alt="logo hesperides" id="logofooter">
+                </a>
+              </figure>
+            </div>
+            <div class="box">
+              <h2>SOBRE NOSOTROS</h2>
+              <p>Somos una comunidad de vecinos dedicada a la venta de productos para la jardinería
+                con el fin de aportar a una fundación sin fines de lucro.
+              </p>
+            </div>
+            <div class="box">
+              <h2>SIGUENOS</h2>
+              <div class="red-social">
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-instagram"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                <a href="#" class="fa fa-youtube"></a>
+              </div>
+            </div>
+          </div>
+          <div class="grupo-2">
+            <small>&copy; 2023 <b>Hespérides</b> - Todos los Derechos Reservados.</small>
+          </div>
+      </footer>
+    </div>
+    <script>
+        const toggleBtn = document.querySelector('.toggle-btn')
+        const toggleBtnIcon = document.querySelector('.toggle-btn i')
+        const dropDownMenu = document.querySelector('.dropdown-menu')
+
+        toggleBtn.onclick = function () {
+            dropDownMenu.classList.toggle('open')
+            const isOpen = dropDownMenu.classList.contains('open')
+            
+            toggleBtnIcon.classList = isOpen
+                ? 'fa-solid fa-bars'
+                : 'fa-solid fa-bars'
+        }
+    </script>
+    <script src="https://kit.fontawesome.com/edf720adb4.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" 
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+  {% endblock content %}
+</body>
+</html>

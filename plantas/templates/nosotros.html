@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiénes somos</title>
+    {% load static %}
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link href="{% static 'css/bootstrap.min.css' %}" type="text/css" rel="stylesheet">
+    <link rel="icon" href="{% static 'img/logo.jpg' %}" type="image">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/estilosapi.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" 
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script src="https://kit.fontawesome.com/edf720adb4.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<!--HEADER-->
+<body>
+  {% block content %}
+  <div class="container">
+    <header>
+      <div class="navbar">
+          <div class="logo">
+              <img src="{% static 'img/logo.jpg' %}" alt="hesper" width="30" height="30">
+              <a href="#">
+              </a>Hespérides</div>
+          <ul class="links">
+            <li><a href="{% url 'index' %}">Página principal</a></li>
+            <li><a href="{% url 'nosotros' %}">Quiénes somos</a></li>
+            <li><a href="{% url 'galeria' %}">Galería productos</a></li>
+            <li><a href="{% url 'plantas' %}">Plantas en stock</a></li>
+            <li><a href="{% url 'contacto' %}">Contáctanos</a></li>
+          </ul>
+          <a href="#" class="action-btn">Bienvenid@ {{user.username}}</a>
+          <div class="toggle-btn">
+              <i class="fa-solid fa-bars"></i>
+          </div>
+      </div>
+      <div class="dropdown-menu">
+        <li><a href="{% url 'index' %}">Página principal</a></li>
+        <li><a href="{% url 'nosotros' %}">Quiénes somos</a></li>
+        <li><a href="{% url 'galeria' %}">Galería productos</a></li>
+        <li><a href="{% url 'plantas' %}">Plantas en stock</a></li>
+        <li><a href="{% url 'contacto' %}">Contáctanos</a></li>
+    </div>
+    </header>
+  </div> <br>
+  <main role="main" class="container">
+    
+      <div class="row jumbotron" id="nosotros1">
+        <div class="col-lg-6">
+          <div id="nosotrostxt1">
+            <h1>Quiénes somos?</h1> <br>
+            <h2 class="lead"><strong>Grupo de vecinos dedicado a la venta de productos de jardinería.</strong></h2> <br>
+            <p>
+              La idea surgió de un grupo de vecinos adeptos a la jardinería que tenían como objetivo fomentar el interés
+              por esta tarea dentro de la comunidad por medio de la venta de diversos artículos relacionados con esta, tierra 
+              de hoja, semillas, artículos de jardinería entre otros. <br><br> Adicionalmente buscamos ayudar a fundaciones
+              sin fines de lucro interesadas en compartir nuestra iniciativa.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <img src="{% static 'img/somos2.jpg' %}" alt="" class="img-fluid" id="nosotrosimg1">
+        </div>
+      </div><br>
+      <div class="row jumbotron" id="nosotros2">
+        <div class="col-lg-6">
+          <div id="nosotrostxt2">
+            <h1>Nuestra misión</h1> <br>
+            <h2 class="lead">Una página web como guía de nuestra visión<weak></weak></h2> <br>
+            <p> Nuestro reconocimiento como una comunidad para la compra/venta de productos de jardinería y fomento de fundaciones
+              del rubro comenzó por medio de la organización entre los vecinos, que luego evolucionó a la difusión por redes sociales. <br><br>
+              Buscamos dar otro gran salto hacia la difusión de nuestro proyecto por medio de una página web, percibimos este paso como
+              una formalización de nuestro emprendimiento, y esperamos con ansias poder alcanzar un mayor público interesado en emprender junto
+              a nosotros.
+              <br> <br>
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <img src="{% static 'img/somos3.jpg' %}" alt="" class="img-fluid" id="nosotrosimg2"> 
+        </div>
+      </div><br>
+      <div class="row jumbotron" id="embed1">
+        <h3 id="vidref">Video de referencia</h3>
+        <div class="col-lg-12">
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe id="embedref" class="embed-responsive-item" width="1264" height="711" src="https://www.youtube.com/embed/NJ_WF3cV4i0" 
+            title="Curso de Jardineria clase 1 | aprenderás los tipos de plantas que existen y cómo diferenciarlas" frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div><br><br><!--API AQUI-->
+      <div class="row jumbotron" id="api1">
+        <h3 class="apititle">Conoce el clima de tu ciudad o país</h3>
+        <div class="card">
+          <div class="search">
+            <input type="text" placeholder="Ingresa el nombre de la ciudad"
+            spellcheck="false">
+            <button><img src="{% static 'img/API/search.png' %}"></button>
+          </div>
+          <div class="error">
+            <p>Nombre inválido</p>
+          </div>
+          <div class="weather">
+            <img src="{%static 'img/API/rain.png' %}" class="weather-icon">
+            <h1 class="temp">22°c</h1>
+            <h2 class="city">New York</h2>
+            <div class="details">
+              <div class="col">
+                <img src="{% static 'img/API/humidity.png' %}">
+                <div>
+                  <p class="humidity">50%</p>
+                  <p>Humidity</p>
+                </div>
+              </div>
+              <div class="col">
+                <img src="{% static 'img/API/wind.png' %}">
+                <div>
+                  <p class="wind">15 km/h</p>
+                  <p>Wind Speed</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><br>
+      <script>
+        const apiKey = "dcf0fc09a717380e176ba2ed3500026e";
+        const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+        const searchBox = document.querySelector(".search input");
+        const searchBtn = document.querySelector(".search button");
+        const weatherIcon = document.querySelector(".weather-icon");
+        async function checkWeather(city){
+          const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+          if(response.status == 404){
+            document.querySelector(".error").style.display = "block";
+            document.querySelector(".weather").style.display = "none";
+          }
+          else{
+              var data = await response.json();
+            
+            document.querySelector(".city").innerHTML = data.name;
+            document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°c";
+            document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
+            document.querySelector(".wind").innerHTML = data.wind.speed + " km/h";
+
+            if(data.weather[0].main == "Clouds"){
+              weatherIcon.src = "{% static 'img/API/clouds.png' %}";
+            }
+            else if(data.weather[0].main == "Clear"){
+              weatherIcon.src = "{% static 'img/API/clear.png' %}";
+            }
+            else if(data.weather[0].main == "Rain"){
+              weatherIcon.src = "{% static 'img/API/rain.png' %}";
+            }
+            else if(data.weather[0].main == "Drizzle"){
+              weatherIcon.src = "{% static 'img/API/drizzle.png' %}";
+            }
+            else if(data.weather[0].main == "Mist"){
+              weatherIcon.src = "{% static 'img/API/mist.png' %}";
+            }
+            document.querySelector(".weather").style.display = "block";
+            document.querySelector(".error").style.display = "none";
+          }
+          
+        }
+        searchBtn.addEventListener("click", ()=>{
+          checkWeather(searchBox.value);
+        })
+        
+      </script>
+  </main> <br><br>
+    <!--FOOTER-->
+  <div class="container-fluid">
+    <footer class="pie-pagina">
+        <div class="grupo-1">
+          <div class="box">
+            <figure>
+              <a href="#">
+                <img src="{% static 'img/logo.jpg' %}" alt="logo hesperides" id="logofooter">
+              </a>
+            </figure>
+          </div>
+          <div class="box">
+            <h2>SOBRE NOSOTROS</h2>
+            <p>Somos una comunidad de vecinos dedicada a la venta de productos para la jardinería
+              con el fin de aportar a una fundación sin fines de lucro.
+            </p>
+          </div>
+          <div class="box">
+            <h2>SIGUENOS</h2>
+            <div class="red-social">
+              <a href="#" class="fa fa-facebook"></a>
+              <a href="#" class="fa fa-instagram"></a>
+              <a href="#" class="fa fa-twitter"></a>
+              <a href="#" class="fa fa-youtube"></a>
+            </div>
+          </div>
+        </div>
+        <div class="grupo-2">
+          <small>&copy; 2023 <b>Hespérides</b> - Todos los Derechos Reservados.</small>
+        </div>
+    </footer>
+  </div>
+    <script>
+        const toggleBtn = document.querySelector('.toggle-btn')
+        const toggleBtnIcon = document.querySelector('.toggle-btn i')
+        const dropDownMenu = document.querySelector('.dropdown-menu')
+
+        toggleBtn.onclick = function () {
+            dropDownMenu.classList.toggle('open')
+            const isOpen = dropDownMenu.classList.contains('open')
+            
+            toggleBtnIcon.classList = isOpen
+                ? 'fa-solid fa-bars'
+                : 'fa-solid fa-bars'
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" 
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+  {% endblock content %}
+</body>
+</html>
